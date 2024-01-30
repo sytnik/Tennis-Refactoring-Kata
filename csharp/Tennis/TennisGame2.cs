@@ -6,8 +6,8 @@ public class TennisGame2(string playerOneName, string playerTwoName) : ITennisGa
     private int _playerTwoScore;
     private string p1res = "";
     private string p2res = "";
-    private string _playerOneName = playerOneName;
-    private string _playerTwoName = playerTwoName;
+    private readonly string _playerOneName = playerOneName;
+    private readonly string _playerTwoName = playerTwoName;
     public void SetP1Score(int number) => _playerOneScore += number;
     public void SetP2Score(int number) => _playerTwoScore += number;
 
@@ -90,22 +90,22 @@ public class TennisGame2(string playerOneName, string playerTwoName) : ITennisGa
 
         if (_playerOneScore > _playerTwoScore && _playerTwoScore >= 3)
         {
-            score = "Advantage player1";
+            score = $"Advantage {playerOneName}";
         }
 
         if (_playerTwoScore > _playerOneScore && _playerOneScore >= 3)
         {
-            score = "Advantage player2";
+            score = $"Advantage {playerTwoName}";
         }
 
-        if (_playerOneScore >= 4 && _playerTwoScore >= 0 && (_playerOneScore - _playerTwoScore) >= 2)
+        if (_playerOneScore >= 4 && _playerTwoScore >= 0 && _playerOneScore - _playerTwoScore >= 2)
         {
-            score = "Win for player1";
+            score = $"Win for {playerOneName}";
         }
 
-        if (_playerTwoScore >= 4 && _playerOneScore >= 0 && (_playerTwoScore - _playerOneScore) >= 2)
+        if (_playerTwoScore >= 4 && _playerOneScore >= 0 && _playerTwoScore - _playerOneScore >= 2)
         {
-            score = "Win for player2";
+            score = $"Win for {playerTwoName}";
         }
 
         return score;
